@@ -1,0 +1,5 @@
+.form-control:disabled {
+  background-color: transparent;
+  color: #acb3b7;
+  opacity: 1;
+}

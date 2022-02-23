@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block browser_title %}HoMIES{% endblock browser_title %}</title>
+
+    <!-- ASSETS -->
+    {% include 'components/generic_assets.html' %}
+
+    {% block specific_assets %}
+    {% endblock specific_assets %}
+    <!-- /.ASSETS -->
+
+  {% endblock head %}
+  </head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed user-select-none">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+   <!--  <div class="preloader justify-content-center align-items-center">
+      <div class="spinner-border text-primary" role="status" style="width: 2.5rem; height: 2.5rem"></div>
+    </div>
+ -->
+    <!-- HEADER -->
+    <nav class="main-header navbar navbar-expand-md navbar-white navbar-light">
+      <!-- Left navbar links togglers (for responsive) -->
+      <ul class="navbar-nav navbar-no-expand">
+        <!-- Sidebar Toggler -->
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+            <i class="fas fa-bars"></i>
+          </a>
+        </li>
+        <!-- Tobpar toggler -->
+        <li class="nav-item">
+          <button type="button" class="nav-link navbar-toggler border-0" data-toggle="collapse" data-target="#navbarCollapse">
+            <i class="fas fa-caret-down"></i>
+          </button>
+        </li>
+      </ul>
+      <!-- Left navbar links -->
+      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ home_url|default('#') }}" role="button">
+              <i class="fas fa-home {{ is_home_active|default('') }}"></i>
+              <span class="d-inline-block d-md-none ml-1 ml-md-0">Home</span>
+            </a>
+          </li>
+          <!-- Hospital Core -->
+          <li class="nav-item dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle {{ is_hc_active|default('') }}">Hospital Core</a>
+            <ul class="dropdown-menu dropdown-menu-left">
+              <li><a href="#" class="dropdown-item {{ is_patient_mngt_active|default('') }}">Patient Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_treatment_mngt_active|default('') }}">Treatment Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_pharmacy_active|default('') }}">Pharmacy</a></li>
+              <li><a href="#" class="dropdown-item {{ is_mr_active|default('') }}">Medical Record</a></li>
+              <li><a href="#" class="dropdown-item {{ is_doctors_mngt_active|default('') }}">Doctors Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_visitors_mngt_active|default('') }}">Visitors Management</a></li>
+            </ul>
+          </li>
+          <!-- Human Resource -->
+          <li class="nav-item dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle {{ is_hr_active|default('') }}">Human Resource</a>
+            <ul class="dropdown-menu dropdown-menu-left">
+              <li><a href="#" class="dropdown-item {{ is_chc_mngt_active|default('') }}">Core Human Capital Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_recruitment_mngt_active|default('') }}">Recruitment Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_ta_active|default('') }}">Time & Attendance</a></li>
+              <li><a href="#" class="dropdown-item {{ is_performance_mngt_active|default('') }}">Performance Management</a></li>
+            </ul>
+          </li>
+          <!-- Finance -->
+          <li class="nav-item dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle {{ is_finance_active|default('') }}">Finance</a>
+            <ul class="dropdown-menu dropdown-menu-left">
+              <li><a href="{{ gl_url|default('#') }}" class="dropdown-item {{ is_gl_active|default('') }}">General Ledger</a></li>
+              <li><a href="#" class="dropdown-item {{ is_apar_active|default('') }}">Accounts Payable/Receivable</a></li>
+              <li><a href="#" class="dropdown-item {{ is_cd_active|default('') }}">Collection/Disbursement</a></li>
+            </ul>
+          </li>
+          <!-- Logistics -->
+          <li class="nav-item dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle {{ is_logistics_active|default('') }}">Logistics</a>
+            <ul class="dropdown-menu dropdown-menu-left">
+              <li><a href="#" class="dropdown-item {{ is_procurement_mngt_active|default('') }}">Procurement Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_warehousing_mngt_active|default('') }}">Warehousing Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_asset_mngt_active|default('') }}">Asset Management</a></li>
+              <li><a href="#" class="dropdown-item {{ is_project_mngt_active|default('') }}">Project Management</a></li>
+            </ul>
+          </li>
+          <!-- System Administration -->
+          <li class="nav-item {{ is_system_admin_online|default('d-none') }}">
+            <a class="nav-link {{ is_system_admin_active|default('') }}" href="{{ system_admin_url|default('#') }}" role="button">
+              <span>SysAdmin</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-nav -->
+
+      <!-- Right navbar links -->
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- user Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a href="#!" class="nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
+            <i class="fas fa-user-circle"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+            <a href="#!" class="dropdown-item">
+              <i class="fas fa-user mr-2"></i> Profile
+            </a>
+            <a href="#!" class="dropdown-item">
+              <i class="fas fa-cog mr-2"></i> Settings
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#!" class="dropdown-item" onclick="confirmToLogout();">
+              <i class="fas fa-sign-out-alt mr-2"></i> Log out
+            </a>
+          </div>
+        </li>
+      </ul>
+      <!-- /.navbar-nav -->
+    </nav>
+    <!-- /.HEADER -->
+  
+    <!-- SIDEBAR -->
+    <aside class="main-sidebar main-sidebar-custom sidebar-light-primary">
+      <!-- Brand Logo -->
+      <a href="../../index3.html" class="brand-link">
+        <img src="{{ url_for('static', path='/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle border" style="opacity: .8">
+        <span class="brand-text font-weight-light">{% block project_name %}HoMIES{% endblock project_name %}</span>
+      </a>
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="" class="img-circle border" id="userImagePlaceholder" />
+          </div>
+          <div class="info mr-1 w-100">
+            <!-- User Full Name -->
+            <a href="#" class="d-block text-truncate" id="userFullName"></a>
+            <!-- User Position -->
+            <div class="small text-secondary text-truncate" id="userPosition"></div>
+            <!-- User Department -->
+            <div class="small text-secondary text-truncate" id="userDepartment"></div>
+          </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- sidebar -->
+            {% include "components/" ~ sidebar ~ ".html" %}
+            <!-- /.sidebar -->
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+      <!-- Sidebar Custom -->
+      <div class="sidebar-custom">
+        <a href="#" class="btn btn-link"><i class="fas fa-cogs text-dark"></i></a>
+        <a href="#" class="btn btn-sm btn-danger hide-on-collapse pos-right" onclick="confirmToLogout();">Log out<i class="fas fa-sign-out-alt ml-2"></i></a>
+      </div>
+      <!-- /.sidebar-custom -->
+    </aside>
+    <!-- /.SIDEBAR -->
+
+    <!-- CONTENT -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <h1>
+            {% block content_title %}
+            {% endblock content_title %}
+          </h1>
+          <p class="text-muted">
+            {% block content_subtitle %}
+            {% endblock content_subtitle %}
+          </p>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content-header -->
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+        {% block main_content %}
+        {% endblock main_content %}
+        </div>
+      </section>
+      <!-- /.Main content -->
+    </div>
+    <!-- /.CONTENT -->
+
+    <!-- confirm modal -->
+    {% include 'components/confirm_modal.html' %}
+    <!-- /.confirm modal -->
+   
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> {% block system_version %}1.0.0{% endblock system_version %}
+      </div>
+      <strong>Copyright &copy; 2021-2022 <a href="#!"> {% block system_name %}HoMIES{% endblock system_name %} </a>.</strong> All rights reserved.
+    </footer>
+    <!-- /.FOOTER -->
+
+  <div>
+  <!-- /.Site wrapper -->
+
+  <!-- SCRIPTS -->
+  {% include 'components/generic_scripts.html' %}
+
+  {% block specific_scripts %}
+  {% endblock specific_scripts %}
+  <!-- /.SCRIPTS -->
+
+</body>
+</html>

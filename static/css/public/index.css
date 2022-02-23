@@ -1,0 +1,10 @@
+.carousel .carousel-item {
+    height: 500px;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    min-height: 300px;
+}

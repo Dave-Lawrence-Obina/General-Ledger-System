@@ -1,0 +1,276 @@
+{% extends 'pages/internal/shared/base.html' %}
+
+<!-- browser title -->
+{% block browser_title %} 
+  {{ browser_title|default('General Journal') }} 
+{% endblock browser_title %}
+
+
+
+<!-- ASSETS -->
+
+{% block specific_assets %}
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/internal/general_ledger/accountant/general_journal.css') }}" />
+{% endblock specific_assets %}
+
+<!-- /.ASSETS -->
+
+
+
+<!-- SIDEBAR -->
+
+{% block project_name %}
+  {{ project_name }}
+{% endblock project_name %}
+
+<!-- /.SIDEBAR -->
+
+
+
+<!-- CONTENT -->
+
+{% block content_title %}
+  {{ content_title|default('General Journal') }}
+{% endblock content_title %}
+
+{% block content_subtitle %}
+  {{ content_subtitle }}
+{% endblock content_subtitle %}
+
+{% block main_content %}
+  <!-- Form Modal -->
+  <div class="modal fade" id="form_modal">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="fas fa-sitemap mr-3 text-secondary"></i>Journal Entry</h4>
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" aria-label="Close" form="form">
+            <span aria-hidden="true"><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+
+       
+          <div id="tabsContainer">
+            
+              <ul class="nav nav-tabs mb-3" id="custom-tabs-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="initialTab" data-toggle="pill" href="#initialTabPanel" role="tab" aria-controls="initialTabPanel" aria-selected="true" onclick="toggleForm('initialTabPanel','Initial')" form="form">Initial Entry</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="adjustingTab" data-toggle="pill" href="#adjustingTabPanel" role="tab" aria-controls="adjustingTabPanel" aria-selected="false" onclick="toggleForm('adjustingTabPanel','Adjusting')" form="form">Adjusting Entry</a>
+                </li>
+                
+              </ul>
+           
+           
+              <div class="tab-content" id="custom-tabs-tabContent">
+                <div class="tab-pane fade active show" id="initialTabPanel" role="tabpanel" aria-labelledby="initialTab">
+                  <!-- form -->
+                  <form id="form">
+                    <input type="text" class="d-none" id="uuid" />
+                    <div class="form-group row">
+                      <div class="col">
+                        <label for="date">Date<span> *</span></label>
+                        <input type="date" class="form-control" id="date" name="date" autocomplete="off" />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                        <label for="debit_account">Debit Account<span> *</span></label>
+                        <select class="form-control" id="debit_account" name="debit_account" autocomplete="off" style="width: 100%;">
+                          <option></option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="credit_account">Credit Account<span> *</span></label>
+                        <select class="form-control" id="credit_account" name="credit_account" autocomplete="off" style="width: 100%;">
+                          <option></option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col">
+                        <table id="form_table" class="table table-bordered  nowrap" style="width: 100%;" >
+                          <thead>
+                            <tr>
+                              <th>Account Title</th>
+                              <th>P.R.</th>
+                              <th>Debit</th>
+                              <th>Credit</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  
+                    <div class="form-group row">
+                      <div class="col">
+                        <label for="explanation">Explanation</label>
+                        <textarea rows="1" class="form-control" id="explanation" name="explanation" placeholder="Enter explanation" autocomplete="off"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group row" id="adjustableRow">
+                      <div class="col-md-2 align-self-center">
+                        <div class="icheck-primary d-inline mr-2">
+                          <input type="checkbox" id="adjustable" name="adjustable">
+                          <label for="adjustable">Adjustable</label>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <select class="form-control" id="method" name="method" autocomplete="off" style="width: 100%;" disabled>
+                          <option></option>
+                        </select>
+                      </div>
+                      <div class="col-md-5">
+                        <select class="form-control" id="account" name="account" autocomplete="off" style="width: 100%;" disabled>
+                          <option></option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                      <div class="col">
+                        <div class="icheck-primary d-inline">
+                          <input type="checkbox" id="status" name="status" checked>
+                          <label for="status">Post</label>
+                        </div>
+                      </div>
+                    </div>
+                  
+                  </form>
+                  <!-- /.form -->
+                  
+                </div>
+                <div class="tab-pane fade" id="adjustingTabPanel" role="tabpanel" aria-labelledby="adjustingTab">
+
+                  <div class="row justify-content-end originating-entry">
+                    <div class="col-6">
+                      <label for="originating_entry">Originating Entry:</label>
+                      <select class="form-control" id="originating_entry" autocomplete="off" style="width: 100%;" form="form">
+                      </select>
+                    </div>
+                  </div>
+                  
+                
+                  
+                  
+                  
+
+
+                </div>
+               
+              </div>
+            
+          </div>
+
+
+          <!-- <p id="">Add account type</p> -->
+          
+        </div>
+        <!-- /.modal-body -->
+        <div class="modal-footer text-right">
+          <button type="button" class="btn btn-sm btn-default mr-2" data-dismiss="modal" form="form">Cancel</button>
+          <button type="button" class="btn btn-sm btn-primary" id="form_submit" onclick="validateFormElements();">
+            <span>Submit</span><i class="fas fa-check ml-2"></i>
+          </button>
+        </div>
+        <!-- /.modal-footer -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <!-- card -->
+  <div class="card card-outline card-primary">
+    <!-- card-header -->
+    <div class="card-header">
+      <h3 class="card-title">List of Journal Entries</h3>
+      <!-- add button -->
+      <div class="text-right">
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#form_modal" data-backdrop="static">
+          <span>Add Entry</span><i class="fa fa-plus ml-2"></i>
+        </button>
+      </div>
+      <!-- /.add button -->
+    </div>
+    <!-- /.card-header -->
+    <!-- card-body -->
+    <div class="card-body">
+      <div class="d-md-flex justify-content-between mb-3">
+        <!-- select accounting period -->
+        <div class="row">
+          <div class="col-auto align-self-center">
+            <span class="">Accounting Period: </span>
+          </div>
+          <div class="col-auto">
+            <select class="form-control form-control-sm" id="ap_month" autocomplete="off" style="width: 100%;">
+              <!-- <option value="" selected disabled hidden>Month</option> -->
+            </select>
+          </div>
+          <div class="col-auto">
+            <select class="form-control form-control-sm" id="ap_year" autocomplete="off" style="width: 100%;">
+              <!-- <option value="" selected disabled hidden>Year</option> -->
+            </select>
+          </div>
+        </div>
+        <!-- /.select accounting period -->
+      </div>
+      <!-- table -->
+      <table id="table" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Accounts</th>
+            <th>Explanation</th>
+            <th>Entry Type</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <!-- /.table -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->    
+{% endblock main_content %}
+
+<!-- /.CONTENT -->
+
+
+
+<!-- FOOTER -->
+
+{% block system_version %}
+  {{ system_version }}
+{% endblock system_version %}
+
+{% block system_name %}
+  {{ system_name }}
+{% endblock system_name %}
+
+<!-- /.FOOTER -->
+
+
+
+<!-- SCRIPTS -->
+
+{% block specific_scripts %}
+  <!-- general_journal -->
+  <script src="{{ url_for('static', path='/js/internal/general_ledger/accountant/general_journal.js') }}"></script>
+{% endblock specific_scripts %}
+
+<!-- /.SCRIPTS -->

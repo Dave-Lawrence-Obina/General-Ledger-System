@@ -1,0 +1,62 @@
+<!-- SIDEBAR -->
+
+{% block sidebar_menu %}
+  <!-- Module Name -->
+  <li class="nav-header font-weight-bold text-wrap">GENERAL LEDGER</li>
+  <li class="nav-header font-weight-bold ">CORE</li> 
+  <li class="nav-item">
+    <a href="../accountant/dashboard" class="nav-link {{ dashboard_menu_item }}">
+      <i class="nav-icon fas fa-chart-pie"></i>
+      <p>Dashboard</p>
+    </a>
+  </li>
+  <li class="nav-header font-weight-bold ">SETUP</li> 
+  <li class="nav-item">
+    <a href="../accountant/account_type" class="nav-link {{ account_type_menu_item }}">
+      <i class='nav-icon fas fa-sitemap'></i>
+      <p>Account Type</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="../accountant/chart_of_accounts" class="nav-link {{ chart_of_accounts_menu_item }}">
+      <i class="nav-icon fas fa-list"></i>
+      <p>Chart of Accounts</p>
+    </a>
+  </li>
+  
+ 
+  <li class="nav-header font-weight-bold ">REFERENCE BOOKS</li> 
+  <li class="nav-item">
+    <a href="../accountant/general_journal" class="nav-link {{ general_journal_menu_item }}">
+      <i class="nav-icon fas fa-book"></i>
+      <p>General Journal</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="../accountant/ledger" class="nav-link {{ ledger_menu_item }}">
+      <i class="nav-icon fas fa-book"></i>
+      <p>Ledger</p>
+    </a>
+  </li>
+  <!-- <li class="nav-item">
+    <a href="../accountant/adjustment" class="nav-link {{ adjustment_menu_item }}">
+      <i class="nav-icon fas fa-book"></i>
+      <p>Adjustment</p>
+    </a>
+  </li> -->
+
+ 
+  <!-- <li class="nav-header font-weight-bold ">REPORT</li> 
+  <li class="nav-item">
+    <a href="../accountant/ledger" class="nav-link {{ ledger_menu_item }}">
+      <i class="nav-icon fas fa-book"></i>
+      <p>Ledger</p>
+    </a>
+  </li> -->
+{% endblock sidebar_menu %}
+
+<!-- /.SIDEBAR -->
+
+
+
+

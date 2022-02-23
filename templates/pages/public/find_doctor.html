@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find A Doctor | Homies</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/dist/css/adminlte.min.css') }}">
+</head>
+<body class="layout-top-nav control-sidebar-slide-open layout-navbar-fixed">
+    <div class="wrapper">
+
+        <!-- 
+        | =================================================================================
+        |                               TOP NAVIGATION BAR
+        | =================================================================================
+        -->
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+            <div class="container">
+        
+                <!-- Brand -->
+                <a href="../" class="navbar-brand order-0">
+                    <img 
+                        src="{{ url_for('static', path='/dist/img/AdminLTELogo.png') }}" 
+                        alt="HoMIES" 
+                        class="brand-image img-circle" 
+                        style="opacity: .8"
+                    >
+                    <span class="brand-text font-weight-light">HoMIES</span>
+                </a>
+        
+                <!-- Navbar Toggler -->
+                <button 
+                    class="navbar-toggler order-1 border-0" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarCollapse"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+        
+                <!-- Left Navbar Links -->
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <ul class="navbar-nav">
+        
+                        <!-- Medical Services -->
+                        <li class="nav-item dropdown">
+                            <a 
+                                id="dropdownSubMenu1" 
+                                href="#" 
+                                data-toggle="dropdown"
+                                class="nav-link dropdown-toggle"
+                            >Medical Services</a>
+        
+                            <ul class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">Find a Doctor</a></li>
+                            </ul>
+                        </li>
+        
+                        <!-- Patient & Visitor -->
+                        <li class="nav-item dropdown">
+                            <a 
+                                id="dropdownSubMenu1" 
+                                href="#" 
+                                data-toggle="dropdown" 
+                                aria-haspopup="true" 
+                                aria-expanded="false" 
+                                class="nav-link dropdown-toggle"
+                            >Patients & Visitor</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="#" class="dropdown-item">Some action </a></li>
+                            <li><a href="#" class="dropdown-item">Some other action</a></li>
+        
+                            <li class="dropdown-divider"></li>
+        
+                            <!-- Level two dropdown-->
+                            <li class="dropdown-submenu dropdown-hover">
+                                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                                <li>
+                                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                                </li>
+        
+                                <!-- Level three dropdown-->
+                                <li class="dropdown-submenu">
+                                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                                    <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                    <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                    </ul>
+                                </li>
+                                <!-- End Level three -->
+        
+                                <li><a href="#" class="dropdown-item">level 2</a></li>
+                                <li><a href="#" class="dropdown-item">level 2</a></li>
+                                </ul>
+                            </li>
+                            <!-- End Level two -->
+                        </ul>
+                        </li>
+        
+                        <!-- Careers -->
+                        <li class="nav-item">
+                            <a href="#careers" class="nav-link">Careers</a>
+                        </li>
+                        
+                        <!-- About Us -->
+                        <li class="nav-item dropdown">
+                        <div
+                            role="button"
+                            data-toggle="dropdown"
+                            class="nav-link dropdown-toggle"
+                        >About Us</div>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="#" class="dropdown-item">Vision & Mission</a></li>
+                            <li><a href="#" class="dropdown-item">History</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item">Data Privacy</a></li>
+                            <li><a href="#" class="dropdown-item">Terms and Conditions</a></li>
+                            <li><a href="#" class="dropdown-item">FAQ</a></li>
+                        </ul>
+                    </li>
+        
+                    </ul>
+                </div>
+        
+                <!-- Right Navbar Links -->
+                <div class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <a href="../login" class="btn btn-outline-primary text-nowrap">
+                        <span>Log in</span>
+                        <i class="fas fa-sign-in-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 
+        | =================================================================================
+        |                                   CONTENT / BODY
+        | =================================================================================
+        -->
+        <div class="content-wrapper pb-5">
+            
+            <!-- Content Header -->
+            <div class="content-header">
+                <div class="container">
+                    <h1 class="m-0">Find a doctor</h1>
+                    <div class="text-secondary">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                
+                <!-- Search Component -->
+                <div class="container mb-3">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <form id="searchJobForm">
+                                <div class="input-group">
+                                    <input 
+                                        type="search" 
+                                        class="form-control" 
+                                        placeholder="Find your provider here"
+                                        name="searchQuery"
+                                    >
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List Header -->
+                <div class="container mb-3">
+                    <div>Showing 10 out 0f 100</div>
+                    <div class="small text-secondary">Page 1 out of 10</div>
+                </div>
+
+                <!-- List of Doctors -->
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Doctor Details Component 1 -->
+                        <div class="col-12 col-md-6 d-flex align-items-stretch flex-column">
+                            <div class="card d-flex flex-fill">
+                                <div class="card-header text-muted border-bottom-0">Digital Strategist</div>
+                                
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                        <h2 class="lead font-weight-bold text-primary">Nicole Pearson</h2>
+                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small">
+                                                <span class="fa-li">
+                                                    <i class="fas fa-lg fa-building"></i>
+                                                </span>
+                                                <span class="ml-1">Address: Demo Street 123, Demo City 04312, NJ</span>
+                                            </li>
+                                            <li class="small">
+                                                <span class="fa-li">
+                                                    <i class="fas fa-lg fa-phone"></i>
+                                                </span>
+                                                <span class="ml-1">Phone #: + 800 - 12 12 23 52</span>
+                                            </li>
+                                        </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                        <img src="{{ url_for('static', path='/dist/img/user1-128x128.jpg') }}" alt="user-avatar" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-footer text-right">
+                                    <a href="#" class="btn btn-sm bg-teal">
+                                        <i class="fas fa-comments"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-user mr-1"></i>
+                                        <span>View Profile</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Details Component 2 -->
+                        <div class="col-12 col-md-6 d-flex align-items-stretch flex-column">
+                            <div class="card d-flex flex-fill">
+                                <div class="card-header text-muted border-bottom-0">Digital Strategist</div>
+                                
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                        <h2 class="lead font-weight-bold text-primary">Nicole Pearson</h2>
+                                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small">
+                                                <span class="fa-li">
+                                                    <i class="fas fa-lg fa-building"></i>
+                                                </span> 
+                                                <span class="ml-1">Address: Demo Street 123, Demo City 04312, NJ</span>
+                                            </li> 
+                                            <li class="small">
+                                                <span class="fa-li">
+                                                    <i class="fas fa-lg fa-phone"></i>
+                                                </span> 
+                                                <span>Phone #: + 800 - 12 12 23 52</span>
+                                            </li>
+                                        </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                        <img src="{{ url_for('static', path='/dist/img/user2-160x160.jpg') }}" alt="user-avatar" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer text-right">
+                                    <a href="#" class="btn btn-sm bg-teal">
+                                        <i class="fas fa-comments"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-user mr-1"></i>
+                                        <span>View Profile</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="container">
+                    <div class="pagination justify-content-md-end justify-content-center mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <i class="fas fa-caret-left"></i>
+                            </a>
+                        </li>
+
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">10</a>
+                        </li>
+                        
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="fas fa-caret-right"></i>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+        | =================================================================================
+        |                                    FOOTERS
+        | =================================================================================
+        -->
+        
+        <!-- Main Footer -->
+        <div class="main-footer bg-dark text-white pb-5">
+            <div class="container py-3">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="container my-3">
+                            <h5>About Us</h5>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed magni natus vel inventore earum mollitia iure optio cum ratione libero.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="container my-3">
+                            <h5>Quick Links</h5>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="../">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#">Careers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#">Patients & Visitors</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="container my-3">
+                            <h5>Contact Us</h5>
+                            <div class="form-group">
+                                <label for="email">Sent your email here</label>
+                                <input type="email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Small Footer -->
+        <footer class="main-footer navbar-dark">
+            <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between align-items-center">
+                
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2014-2021 {{BRAND_NAME}}.</strong> 
+                
+                <!-- To the right -->
+                <div>All rights reserved</div>
+            </div>
+            
+        </footer>
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', path='/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ url_for('static', path='/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{{ url_for('static', path='/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ url_for('static', path='/dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ url_for('static', path='/dist/js/demo.js') }}"></script>
+</body>
+</html>

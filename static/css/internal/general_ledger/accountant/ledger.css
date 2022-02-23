@@ -1,0 +1,23 @@
+/* h4 > .bx {
+  font-size: 1.25rem;
+} */
+
+textarea {
+  resize: none;
+}
+
+.account-table > thead > tr > th:first-of-type,
+.account-table > tbody > tr > td:first-of-type {
+  width: 1% !important;
+}
+.account-table > thead > tr > th:nth-of-type(2),
+.account-table > tbody > tr > td:nth-of-type(2) {
+  width: 45% !important;
+}
+.account-table > thead > tr > th:nth-of-type(3),
+.account-table > tbody > tr > td:nth-of-type(3),
+.account-table > thead > tr > th:last-of-type,
+.account-table > tbody > tr > td:last-of-type {
+  width: 27% !important;
+  text-align: right !important;
+}

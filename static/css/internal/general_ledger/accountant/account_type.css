@@ -1,0 +1,53 @@
+/* h4 > .bx {
+  font-size: 1.25rem;
+} */
+
+textarea {
+  resize: none;
+}
+
+/* Code */
+tr > th:first-child,
+tr > td:first-child {
+  width: 0%;
+}
+/* Name */
+tr > th:nth-child(2),
+tr > td:nth-child(2) {
+  width: 20%;
+}
+/* Status */
+tr > th:nth-child(4),
+tr > td:nth-child(4) {
+  width: 15%;
+}
+/* Actions */
+tr > th:last-child,
+tr > td:last-child {
+  width: 10%;
+}
+
+
+
+
+
+#view-modal hr {
+  margin-top: .50rem;
+  margin-bottom: .50rem;
+}
+
+#view-modal label {
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+
+#view-modal input, textarea {
+  background-color: transparent !important;
+  border: none;
+  color: #212529;
+  width: 50%;
+  margin-top: -.12rem;
+  margin-right: 1rem;
+  cursor: default;
+}
+

@@ -1,0 +1,63 @@
+/* h4 > .bx {
+  font-size: 1.25rem;
+} */
+
+textarea {
+  resize: none;
+}
+
+/* Account # */
+tr > th:first-child,
+tr > td:first-child {
+  width: 0%;
+}
+/* Account Title */
+tr > th:nth-child(2),
+tr > td:nth-child(2) {
+  width: 20%;
+}
+/* Account Type */
+tr > th:nth-child(3),
+tr > td:nth-child(3) {
+  width: 15%;
+}
+/* Balance */
+tr > th:nth-child(5),
+tr > td:nth-child(5) {
+  width: 10%;
+}
+/* Status */
+tr > th:nth-child(7),
+tr > td:nth-child(7) {
+  width: 5%;
+}
+/* Actions */
+tr > th:last-child,
+tr > td:last-child {
+  width: 0%;
+}
+
+
+#view-modal hr {
+  margin-top: .50rem;
+  margin-bottom: .50rem;
+}
+
+#view-modal label {
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+
+#view-modal input, select, textarea {
+  background-color: transparent !important;
+  border: none;
+  color: #212529;
+  width: 50%;
+  margin-top: -.12rem;
+  margin-right: 1rem;
+  cursor: default;
+}
+
+select:disabled {
+  opacity: 1;
+}

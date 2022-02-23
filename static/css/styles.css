@@ -1,0 +1,44 @@
+/* .bx {
+  font-weight: bold;
+  font-size: 1rem;
+} */
+
+#userImagePlaceholder {
+  height: auto;
+  width: 2.1rem;
+  /* width: 2.5rem;
+  height: 2.5rem; */
+  object-fit: contain;
+}
+.user-image-placeholder-content {
+  height: 2.1rem !important;
+  content: url("http://127.0.0.1:8000/static/svg/user-tie-solid.svg");
+}
+
+label > span {
+  color: #ef4444 !important;
+  font-size: 1rem;
+}
+
+.table th, .table td {
+  padding: .35rem .75rem; 
+}
+
+tr > td {
+  word-wrap: break-word; 
+  /* word-break: break-all;  */
+  white-space: normal;
+}
+
+#form-modal .modal-footer {
+  background-color: rgba(0,0,0,.03);
+  border-top: 0 solid rgba(0,0,0,.125);
+  padding: .50rem .75rem;
+}
+
+
+
+
+
+
+

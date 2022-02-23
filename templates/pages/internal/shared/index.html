@@ -1,0 +1,81 @@
+{% extends 'pages/internal/shared/base.html' %}
+
+<!-- browser title -->
+{% block browser_title %} 
+  {{ browser_title|default('Home | Homies') }} 
+{% endblock browser_title %}
+
+
+
+<!-- ASSETS -->
+
+{% block specific_assets %}
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/internal/index.css') }}" />
+{% endblock specific_assets %}
+
+<!-- /.ASSETS -->
+
+
+
+<!-- SIDEBAR -->
+
+{% block project_name %}
+  {{ project_name }}
+{% endblock project_name %}
+
+<!-- /.SIDEBAR -->
+
+
+
+<!-- CONTENT -->
+
+{% block content_title %}
+  {{ content_title|default('Main Dashboard') }}
+{% endblock content_title %}
+
+{% block content_subtitle %}
+  {{ content_subtitle }}
+{% endblock content_subtitle %}
+
+{% block main_content %}
+  <!-- Under Maintenance -->
+  <div class="d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="py-5 d-flex justify-content-center">
+        <img 
+            draggable="false"
+            src="{{ url_for('static', path='/svg/under_construction.svg') }}" 
+            alt="Under Maintenance" 
+            width="50%"
+        >
+    </div>
+    <h4>Oops! This page is under maintenance.</h4>
+    <p class="text-secondary">You can go back in others days. Sorry for the inconvenience.</p>
+  </div>
+{% endblock main_content %}
+
+<!-- /.CONTENT -->
+
+
+
+<!-- FOOTER -->
+
+{% block system_version %}
+  {{ system_version }}
+{% endblock system_version %}
+
+{% block system_name %}
+  {{ system_name }}
+{% endblock system_name %}
+
+<!-- /.FOOTER -->
+
+
+
+<!-- SCRIPTS -->
+
+{% block specific_scripts %}
+  <!-- index -->
+  <script src="{{ url_for('static', path='/js/internal/index.js') }}"></script>
+{% endblock specific_scripts %}
+
+<!-- /.SCRIPTS -->

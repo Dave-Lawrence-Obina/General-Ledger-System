@@ -1,0 +1,229 @@
+{% extends 'pages/internal/shared/base.html' %}
+
+<!-- browser title -->
+{% block browser_title %} 
+  {{ browser_title|default('Account Type') }} 
+{% endblock browser_title %}
+
+
+
+<!-- ASSETS -->
+
+{% block specific_assets %}
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/internal/general_ledger/accountant/account_type.css') }}" />
+{% endblock specific_assets %}
+
+<!-- /.ASSETS -->
+
+
+
+<!-- SIDEBAR -->
+
+{% block project_name %}
+  {{ project_name }}
+{% endblock project_name %}
+
+<!-- /.SIDEBAR -->
+
+
+
+<!-- CONTENT -->
+
+{% block content_title %}
+  {{ content_title|default('Account Type') }}
+{% endblock content_title %}
+
+{% block content_subtitle %}
+  {{ content_subtitle }}
+{% endblock content_subtitle %}
+
+{% block main_content %}
+  <!-- Form Modal -->
+  <div class="modal fade" id="form-modal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="fas fa-sitemap mr-3 text-secondary"></i>Account Type</h4>
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <p id="">Add account type</p> -->
+          <!-- form -->
+          <form id="form">
+            <input type="text" class="d-none" id="uuid" />
+            <div class="form-group row">
+              <div class="col">
+                <label for="name">Name<span> *</span></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col">
+                <label for="code">Code<span> *</span><small>&emsp;100 - 900</small></label>
+                <input type="number" class="form-control" id="code" name="code" placeholder="Enter code" autocomplete="off"
+                  min="100" max="900" step="100" />
+              </div>
+            </div>
+            <div class="form-group row mb-0">
+              <div class="col">
+                <label for="description">Description</label>
+                <textarea rows="3" class="form-control" id="description" name="description" placeholder="Enter description" autocomplete="off"></textarea>
+              </div>
+            </div>
+          </form>
+          <!-- /.form -->
+        </div>
+        <!-- /.modal-body -->
+        <div class="modal-footer text-right">
+          <button type="button" class="btn btn-sm btn-default mr-2" id="form-dismiss" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-sm btn-primary" form="form">Submit<i class="fas fa-check ml-2"></i></button>
+        </div>
+        <!-- /.modal-footer -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <!-- View Modal -->
+  <div class="modal fade" id="view-modal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="fas fa-sitemap mr-3 text-secondary"></i>Account Type</h4>
+          <button type="button" class="btn btn-sm btn-default" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2">Details about the account type.</div>
+          <hr />
+            <!-- Name -->
+            <div class="d-flex justify-content-between">
+              <label for="view-name">Name</label>
+              <input type="text" class="" id="view-name" disabled />
+            </div>
+            <hr />
+            <!-- Code -->
+            <div class="d-flex justify-content-between">
+              <label for="view-code">Code</label>
+              <input type="text" class="" id="view-code" disabled />
+            </div>
+            <hr />
+            <!-- Description -->
+            <div class="d-flex justify-content-between">
+              <label for="view-description">Description</label>
+              <textarea rows="3" class="" id="view-description" disabled></textarea>
+            </div>
+            <hr />
+            <!-- Status -->
+            <div class="d-flex justify-content-between">
+              <label for="view-status">Status</label>
+              <input type="text" class="" id="view-status" disabled />
+            </div>
+            <hr />
+            <!-- Created By -->
+            <div class="d-flex justify-content-between">
+              <label for="view-created-by">Created By</label>
+              <input type="text" class="" id="view-created-by" disabled />
+            </div>
+            <hr />
+            <!-- Created At -->
+            <div class="d-flex justify-content-between">
+              <label for="view-created-at">Created At</label>
+              <input type="text" class="" id="view-created-at" disabled />
+            </div>
+            <div class="d-none" id="updatedByAtDiv">
+              <hr />
+              <!-- Updated By -->
+              <div class="d-flex justify-content-between">
+                <label for="view-updated-by">Updated By</label>
+                <input type="text" class="" id="view-updated-by" disabled />
+              </div>
+              <hr />
+              <!-- Updated At -->
+              <div class="d-flex justify-content-between">
+                <label for="view-updated-at">Updated At</label>
+                <input type="text" class="" id="view-updated-at" disabled />
+              </div>
+            </div>
+        </div>
+        <!-- /.modal-body -->
+        <div class="modal-footer text-right">
+          <button type="button" class="btn btn-sm btn-default mr-2" id="view-dismiss" data-dismiss="modal">Cancel</button>
+          <button type="button" class="d-none" id="view-toggle" data-toggle="modal" data-target="#view-modal" data-backdrop="static"></button>
+        </div>
+        <!-- /.modal-footer -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.view-modal -->
+
+  <!-- card -->
+  <div class="card card-outline card-primary">
+    <!-- card-header -->
+    <div class="card-header">
+      <h3 class="card-title">List of Account Types</h3>
+      <!-- new button -->
+      <div class="text-right">
+        <button type="button" class="btn btn-sm btn-primary" id="form-toggle" data-toggle="modal" data-target="#form-modal" data-backdrop="static">
+          <span>Add Account Type</span><i class="fa fa-plus ml-2"></i>
+        </button>
+      </div>
+      <!-- /.new button -->
+    </div>
+    <!-- /.card-header -->
+    <!-- card-body -->
+    <div class="card-body">
+      <!-- table -->
+      <table id="table" class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <!-- /.table -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->    
+{% endblock main_content %}
+
+<!-- /.CONTENT -->
+
+
+
+<!-- FOOTER -->
+
+{% block system_version %}
+  {{ system_version }}
+{% endblock system_version %}
+
+{% block system_name %}
+  {{ system_name }}
+{% endblock system_name %}
+
+<!-- /.FOOTER -->
+
+
+
+<!-- SCRIPTS -->
+
+{% block specific_scripts %}
+  <!-- account type -->
+  <script src="{{ url_for('static', path='/js/internal/general_ledger/accountant/account_type.js') }}"></script>
+{% endblock specific_scripts %}
+
+<!-- /.SCRIPTS -->

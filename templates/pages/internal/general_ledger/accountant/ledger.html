@@ -1,0 +1,143 @@
+{% extends 'pages/internal/shared/base.html' %}
+
+<!-- browser title -->
+{% block browser_title %} 
+  {{ browser_title|default('Ledger') }} 
+{% endblock browser_title %}
+
+
+
+<!-- ASSETS -->
+
+{% block specific_assets %}
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/internal/general_ledger/accountant/ledger.css') }}" />
+{% endblock specific_assets %}
+
+<!-- /.ASSETS -->
+
+
+
+<!-- SIDEBAR -->
+
+{% block project_name %}
+  {{ project_name }}
+{% endblock project_name %}
+
+<!-- /.SIDEBAR -->
+
+
+
+<!-- CONTENT -->
+
+{% block content_title %}
+  {{ content_title|default('Ledger') }}
+{% endblock content_title %}
+
+{% block content_subtitle %}
+  {{ content_subtitle }}
+{% endblock content_subtitle %}
+
+{% block main_content %}
+  
+  <!-- card -->
+  <div class="card card-outline card-primary">
+    <!-- card-header -->
+    <div class="card-header">
+      
+        <h3 class="card-title">List of Ledger Accounts</h3>
+     
+     
+    </div>
+    <!-- /.card-header -->
+    <!-- card-body -->
+    <div class="card-body">
+      <div class="d-md-flex justify-content-between mb-3">
+        <!-- select accounting period -->
+        <div class="row">
+          <div class="col-auto align-self-center">
+            <span class="text-secondary">Accounting Period: </span>
+          </div>
+          <div class="col-auto">
+            <select class="form-control form-control-sm" id="ap_month" autocomplete="off" style="width: 100%;">
+              <!-- <option value="" selected disabled hidden>Month</option> -->
+            </select>
+          </div>
+          <div class="col-auto">
+            <select class="form-control form-control-sm" id="ap_year" autocomplete="off" style="width: 100%;">
+              <!-- <option value="" selected disabled hidden>Year</option> -->
+            </select>
+          </div>
+        </div>
+        <!-- /.select accounting period -->
+        <!-- select a journal entry -->
+        <div class="row mt-2 mt-md-0">
+          <div class="col-auto align-self-center">
+            <span class="text-secondary">Entries To Post: </span>
+          </div>
+          <div class="col-auto">        
+            <select class="form-control form-control-sm" id="journal_entry" autocomplete="off" style="width: 100%;">
+            </select>
+          </div>
+        </div>
+        <!-- /.select a journal entry -->
+        <!-- select a report -->
+        <div class="row mt-2 mt-md-0">
+          <div class="col-auto align-self-center">
+            <span class="text-secondary">Report: </span>
+          </div>
+          <div class="col-auto">
+            <select class="form-control form-control-sm" id="report" autocomplete="off" style="width: 100%;">
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <!-- /.select a report -->
+      </div>
+      <!-- table -->
+      <table id="table" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Account Number</th>
+            <th>Account Title</th>
+            <th>Accounts</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <!-- /.table -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+   
+{% endblock main_content %}
+
+<!-- /.CONTENT -->
+
+
+
+<!-- FOOTER -->
+
+{% block system_version %}
+  {{ system_version }}
+{% endblock system_version %}
+
+{% block system_name %}
+  {{ system_name }}
+{% endblock system_name %}
+
+<!-- /.FOOTER -->
+
+
+
+<!-- SCRIPTS -->
+
+{% block specific_scripts %}
+  <!-- ledger -->
+  <script src="{{ url_for('static', path='/js/internal/general_ledger/accountant/ledger.js') }}"></script>
+{% endblock specific_scripts %}
+
+<!-- /.SCRIPTS -->
